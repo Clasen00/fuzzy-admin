@@ -36,7 +36,7 @@
 
 | Страница входа | Список товаров | Карточка товара |
 |:-:|:-:|:-:|
-| ![Login](docs/screenshots/login.png) | ![Products](docs/screenshots/products.png) | ![Detail](docs/screenshots/detail.png) |
+| ![Login](login.png) | ![Products](products-page.png) | ![Detail](details.png) |
 
 ---
 
