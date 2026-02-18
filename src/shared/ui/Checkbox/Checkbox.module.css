@@ -1,0 +1,72 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wrapper:has(.input:disabled) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-border, #d0d5dd);
+  border-radius: 4px;
+  background-color: #fff;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s;
+  flex-shrink: 0;
+}
+
+.box:hover {
+  border-color: var(--color-primary, #4d90fe);
+}
+
+.checked,
+.indeterminate {
+  background-color: var(--color-primary, #4d90fe);
+  border-color: var(--color-primary, #4d90fe);
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.input:focus-visible ~ .icon,
+.input:focus-visible + .icon {
+  outline: none;
+}
+
+.wrapper:has(.input:focus-visible) .box {
+  outline: 2px solid var(--color-focus, #4d90fe);
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  color: #fff;
+}
+
+.label {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text, #1a1a1a);
+}

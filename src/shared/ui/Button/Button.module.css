@@ -1,0 +1,126 @@
+/* ── Base ── */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s,
+    border-color 0.15s,
+    box-shadow 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus, #4d90fe);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Sizes ── */
+.sm {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+.md {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.lg {
+  height: 48px;
+  padding: 0 24px;
+  font-size: 16px;
+}
+
+/* ── Variants ── */
+.primary {
+  background-color: var(--color-primary, #4d90fe);
+  color: #fff;
+  border-color: var(--color-primary, #4d90fe);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover, #3a7be0);
+  border-color: var(--color-primary-hover, #3a7be0);
+}
+
+.primary:active:not(:disabled) {
+  background-color: var(--color-primary-active, #2e6acc);
+  border-color: var(--color-primary-active, #2e6acc);
+}
+
+.secondary {
+  background-color: var(--color-secondary-bg, #f0f2f5);
+  color: var(--color-text, #1a1a1a);
+  border-color: var(--color-border, #d9dce1);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-secondary-bg-hover, #e4e7eb);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--color-secondary-bg-active, #d9dce1);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-text, #1a1a1a);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-ghost-hover, rgba(0, 0, 0, 0.06));
+}
+
+.ghost:active:not(:disabled) {
+  background-color: var(--color-ghost-active, rgba(0, 0, 0, 0.1));
+}
+
+.danger {
+  background-color: var(--color-danger, #e53935);
+  color: #fff;
+  border-color: var(--color-danger, #e53935);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-danger-hover, #c62828);
+  border-color: var(--color-danger-hover, #c62828);
+}
+
+.danger:active:not(:disabled) {
+  background-color: var(--color-danger-active, #b71c1c);
+  border-color: var(--color-danger-active, #b71c1c);
+}
+
+/* ── Modifiers ── */
+.fullWidth {
+  width: 100%;
+}
+
+/* ── Inner elements ── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+}

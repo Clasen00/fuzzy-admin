@@ -1,0 +1,73 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-secondary, #6b7280);
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  flex-shrink: 0;
+}
+
+.iconButton:focus-visible {
+  outline: 2px solid var(--color-focus, #4d90fe);
+  outline-offset: 2px;
+}
+
+.iconButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Sizes ── */
+.sm {
+  width: 28px;
+  height: 28px;
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+}
+
+.lg {
+  width: 44px;
+  height: 44px;
+}
+
+/* ── Variants ── */
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-ghost-hover, rgba(0, 0, 0, 0.06));
+  color: var(--color-text, #1a1a1a);
+}
+
+.ghost:active:not(:disabled) {
+  background-color: var(--color-ghost-active, rgba(0, 0, 0, 0.1));
+}
+
+.secondary {
+  background-color: var(--color-secondary-bg, #f0f2f5);
+  border-color: var(--color-border, #d9dce1);
+  color: var(--color-text, #1a1a1a);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-secondary-bg-hover, #e4e7eb);
+}
+
+.secondary:active:not(:disabled) {
+  background-color: var(--color-secondary-bg-active, #d9dce1);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-danger-light, rgba(229, 57, 53, 0.08));
+  color: var(--color-danger, #e53935);
+}
+
+.danger:active:not(:disabled) {
+  background-color: var(--color-danger-light-active, rgba(229, 57, 53, 0.15));
+}

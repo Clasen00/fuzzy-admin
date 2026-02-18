@@ -1,0 +1,75 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--color-border, #d0d5dd);
+  border-radius: 8px;
+  background-color: #fff;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.wrapper:focus-within {
+  border-color: var(--color-primary, #4d90fe);
+  box-shadow: 0 0 0 3px rgba(77, 144, 254, 0.15);
+}
+
+.error {
+  border-color: var(--color-danger, #e53935);
+}
+
+.error:focus-within {
+  border-color: var(--color-danger, #e53935);
+  box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.15);
+}
+
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Sizes ── */
+.sm {
+  height: 32px;
+  padding: 0 10px;
+}
+
+.md {
+  height: 40px;
+  padding: 0 12px;
+}
+
+.lg {
+  height: 48px;
+  padding: 0 16px;
+}
+
+/* ── Input ── */
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-text, #1a1a1a);
+}
+
+.input::placeholder {
+  color: var(--color-text-tertiary, #9ca3af);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Icon slots ── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--color-text-secondary, #6b7280);
+}
