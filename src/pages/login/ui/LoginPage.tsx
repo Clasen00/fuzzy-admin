@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Button, Input, Checkbox } from "@/shared/ui";
-import { ROUTES } from "@/shared/config";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
 
 import {
   login,
@@ -11,7 +10,8 @@ import {
   selectSessionError,
 } from "@/entities/session";
 
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { ROUTES } from "@/shared/config";
+import { Button, Input, Checkbox } from "@/shared/ui";
 
 import styles from "./LoginPage.module.css";
 
