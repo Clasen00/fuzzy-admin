@@ -1,9 +1,22 @@
 import axios from "axios";
 
-export const baseApi = axios.create({
-  baseURL: import.meta.env.VITE_API_URL ?? "https://dummyjson.com",
+const API_BASE_URL = "https://dummyjson.com";
+
+export const apiClient = axios.create({
+  baseURL: API_BASE_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  timeout: 10_000,
+});
+
+// Предоставляем токен интерцептору
+apiClient.interceptors.request.use((config) => {
+  const token =
+    localStorage.getItem("accessToken") ?? sessionStorage.getItem("accessToken");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
 });

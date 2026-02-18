@@ -27,6 +27,7 @@ import {
   TableHeadCell,
   Checkbox,
   Pagination,
+  ProgressBar,
 } from "@/shared/ui";
 
 import styles from "./ProductTable.module.css";
@@ -63,20 +64,18 @@ export function ProductTable({ onDeleted }: ProductTableProps) {
     dispatch(setPage(newPage));
   };
 
-  if (loading) {
-    return <div className={styles.state}>Загрузка товаров…</div>;
-  }
-
   if (error) {
     return <div className={styles.stateError}>Ошибка: {error}</div>;
   }
 
-  if (products.length === 0) {
+  if (!loading && products.length === 0) {
     return <div className={styles.state}>Товары не найдены</div>;
   }
 
   return (
     <div className={styles.wrapper}>
+      <ProgressBar loading={loading} />
+
       <Table>
         <TableHead>
           <TableRow>

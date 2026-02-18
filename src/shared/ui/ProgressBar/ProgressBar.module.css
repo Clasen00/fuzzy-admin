@@ -1,0 +1,27 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: rgba(77, 144, 254, 0.15);
+}
+
+.bar {
+  height: 100%;
+  width: 40%;
+  background-color: var(--color-primary, #4d90fe);
+  border-radius: 0 2px 2px 0;
+  animation: progress 1.2s ease-in-out infinite;
+}
+
+@keyframes progress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(350%);
+  }
+}

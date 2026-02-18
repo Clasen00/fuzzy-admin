@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { formatPrice } from "@/shared/lib";
-import { Checkbox } from "@/shared/ui";
+import { buildProductDetailPath } from "@/shared/config";
+import { Badge, Checkbox } from "@/shared/ui";
 import { TableRow, TableCell } from "@/shared/ui";
 
 import type { Product } from "../../model/types";
-import { ProductStatusBadge } from "../ProductStatusBadge/ProductStatusBadge";
 
 import styles from "./ProductRow.module.css";
 
@@ -17,35 +17,50 @@ interface ProductRowProps {
 }
 
 export function ProductRow({ product, selected, onSelect, actions }: ProductRowProps) {
+  const navigate = useNavigate();
+
+  const statusBadge =
+    product.stock > 0
+      ? { label: "В наличии", variant: "success" as const }
+      : { label: "Нет в наличии", variant: "danger" as const };
+
+  const isLowRating = product.rating < 3;
+
+  const handleRowClick = () => {
+    navigate(buildProductDetailPath(product.id));
+  };
+
   return (
-    <TableRow selected={selected}>
-      <TableCell>
+    <TableRow selected={selected} onClick={handleRowClick} className={styles.row}>
+      <TableCell onClick={(e) => e.stopPropagation()}>
         <Checkbox checked={selected} onChange={() => onSelect(product.id)} />
       </TableCell>
 
       <TableCell>
-        <div className={styles.productInfo}>
-          <img src={product.thumbnail} alt={product.title} className={styles.image} />
-          <div>
-            <div className={styles.name}>{product.title}</div>
-            <div className={styles.meta}>
-              {product.brand} · {product.category}
-            </div>
+        <div className={styles.product}>
+          <img className={styles.thumbnail} src={product.thumbnail} alt={product.title} />
+          <div className={styles.info}>
+            <span className={styles.title}>{product.title}</span>
+            <span className={styles.brand}>{product.brand}</span>
           </div>
         </div>
       </TableCell>
 
-      <TableCell>{formatPrice(product.price)}</TableCell>
+      <TableCell>${product.price}</TableCell>
 
-      <TableCell>{product.stock}</TableCell>
+      <TableCell>{product.stock} шт.</TableCell>
 
       <TableCell>
-        <ProductStatusBadge status={product.availabilityStatus} />
+        <Badge variant={statusBadge.variant}>{statusBadge.label}</Badge>
       </TableCell>
 
-      <TableCell>{product.rating.toFixed(1)} ★</TableCell>
+      <TableCell>
+        <span className={isLowRating ? styles.ratingLow : styles.rating}>
+          ⭐ {product.rating}
+        </span>
+      </TableCell>
 
-      {actions && <TableCell>{actions}</TableCell>}
+      <TableCell onClick={(e) => e.stopPropagation()}>{actions}</TableCell>
     </TableRow>
   );
 }

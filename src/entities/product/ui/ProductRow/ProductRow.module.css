@@ -23,3 +23,50 @@
   color: var(--color-text-secondary, #6b7280);
   margin-top: 2px;
 }
+
+.row {
+  cursor: pointer;
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumbnail {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: var(--color-secondary-bg, #f0f2f5);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text, #1a1a1a);
+}
+
+.brand {
+  font-size: 12px;
+  color: var(--color-text-secondary, #6b7280);
+}
+
+.rating {
+  font-size: 14px;
+  color: var(--color-text, #1a1a1a);
+}
+
+.ratingLow {
+  font-size: 14px;
+  color: var(--color-danger, #e53935);
+  font-weight: 600;
+}

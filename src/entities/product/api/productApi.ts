@@ -1,4 +1,4 @@
-import { baseApi } from "@/shared/api";
+import { apiClient } from "@/shared/api";
 
 import type { ProductFilters, ProductsResponse, Product } from "../model/types";
 
@@ -18,7 +18,7 @@ export const productApi = {
 
     /* Поиск */
     if (filters.search) {
-      const { data } = await baseApi.get<ProductsResponse>("/products/search", {
+      const { data } = await apiClient.get<ProductsResponse>("/products/search", {
         params: { q: filters.search, ...params },
       });
       return data;
@@ -26,7 +26,7 @@ export const productApi = {
 
     /* По категории */
     if (filters.category) {
-      const { data } = await baseApi.get<ProductsResponse>(
+      const { data } = await apiClient.get<ProductsResponse>(
         `/products/category/${encodeURIComponent(filters.category)}`,
         { params },
       );
@@ -34,19 +34,19 @@ export const productApi = {
     }
 
     /* Все товары */
-    const { data } = await baseApi.get<ProductsResponse>("/products", {
+    const { data } = await apiClient.get<ProductsResponse>("/products", {
       params,
     });
     return data;
   },
 
   getById: async (id: number): Promise<Product> => {
-    const { data } = await baseApi.get<Product>(`/products/${id}`);
+    const { data } = await apiClient.get<Product>(`/products/${id}`);
     return data;
   },
 
   create: async (product: Omit<Product, "id" | "meta" | "reviews">): Promise<Product> => {
-    const { data } = await baseApi.post<Product>("/products/add", product);
+    const { data } = await apiClient.post<Product>("/products/add", product);
     return data;
   },
 
@@ -54,17 +54,17 @@ export const productApi = {
     id: number,
     product: Partial<Omit<Product, "id" | "meta" | "reviews">>,
   ): Promise<Product> => {
-    const { data } = await baseApi.put<Product>(`/products/${id}`, product);
+    const { data } = await apiClient.put<Product>(`/products/${id}`, product);
     return data;
   },
 
   delete: async (id: number): Promise<Product> => {
-    const { data } = await baseApi.delete<Product>(`/products/${id}`);
+    const { data } = await apiClient.delete<Product>(`/products/${id}`);
     return data;
   },
 
   getCategories: async (): Promise<CategoryListItem[]> => {
-    const { data } = await baseApi.get<CategoryListItem[]>("/products/categories");
+    const { data } = await apiClient.get<CategoryListItem[]>("/products/categories");
     return data;
   },
 };
