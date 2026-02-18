@@ -1,73 +1,228 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛍️ Product Admin Panel
 
-Currently, two official plugins are available:
+**Панель управления товарами с авторизацией, сортировкой, поиском и пагинацией**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2-764ABC?logo=redux&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite&logoColor=white)
+![Feature-Sliced Design](https://img.shields.io/badge/FSD-Architecture-orange)
 
-## React Compiler
+[Демо](#демо) • [Быстрый старт](#быстрый-старт) • [Архитектура](#архитектура) • [Функциональность](#функциональность)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+</div>
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 О проекте
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Product Admin Panel** — это SPA-приложение для управления каталогом товаров, построенное на React + TypeScript с применением архитектуры Feature-Sliced Design (FSD).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Проект решает задачу администрирования товаров: просмотр списка с сортировкой и поиском, просмотр детальной информации, добавление и удаление товаров.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+**Для кого:** разработчикам как референс-проект по FSD-архитектуре и современному React-стеку.
+
+---
+
+## 🎬 Демо
+
+> Тестовые данные для входа:
+> - **Логин:** `emilys`
+> - **Пароль:** `emilyspass`
+
+### Скриншоты
+
+| Страница входа | Список товаров | Карточка товара |
+|:-:|:-:|:-:|
+| ![Login](docs/screenshots/login.png) | ![Products](docs/screenshots/products.png) | ![Detail](docs/screenshots/detail.png) |
+
+---
+
+## ✨ Функциональность
+
+### Авторизация
+- Форма входа с валидацией полей (обязательность заполнения)
+- Обработка ошибок API с выводом сообщения под формой
+- Чекбокс **«Запомнить меня»**:
+  - ✅ установлен → токен в `localStorage`, сессия живёт после закрытия браузера
+  - ❌ не установлен → токен в `sessionStorage`, сессия сбрасывается при закрытии вкладки
+- Защита маршрутов: неавторизованные пользователи перенаправляются на `/login`
+
+### Список товаров
+- Таблица с колонками: товар, цена, остаток, статус, рейтинг
+- **Прогресс-бар** при загрузке данных
+- **Сортировка** по столбцам (цена, рейтинг, остаток, название) — состояние сохраняется
+- **Поиск** по названию через API (`/products/search?q=...`)
+- **Пагинация** с переключением страниц
+- Множественный выбор товаров с чекбоксами
+- Рейтинг ниже 3 подсвечивается **красным цветом**
+
+### Управление товарами
+- **Добавление** — форма с полями: наименование, цена, вендор, артикул; Toast-уведомление при успехе
+- **Удаление** — одиночное и массовое с подтверждением
+- **Детальная страница** товара с галереей изображений
+
+---
+
+## 🛠 Технологический стек
+
+| Категория | Технология |
+|-----------|-----------|
+| **UI** | React 19, CSS Modules |
+| **Язык** | TypeScript 5 |
+| **Состояние** | Redux Toolkit, createAsyncThunk |
+| **Роутинг** | React Router 6 (createBrowserRouter) |
+| **HTTP** | Axios |
+| **Сборка** | Vite 6 |
+| **Архитектура** | Feature-Sliced Design (FSD) |
+| **API** | [DummyJSON](https://dummyjson.com/docs/products) |
+
+---
+
+## 🚀 Быстрый старт
+
+### Требования
+
+- **Node.js** ≥ 18
+- **npm** ≥ 9
+
+### Установка и запуск
+
+```bash
+# Клонировать репозиторий
+git clone https://github.com/your-username/product-admin-panel.git
+cd product-admin-panel
+
+# Установить зависимости
+npm install
+
+# Запустить dev-сервер
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Приложение будет доступно по адресу: `http://localhost:5173`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Другие команды
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build      # Сборка для продакшена
+npm run preview    # Предпросмотр продакшен-сборки
+npm run lint       # Проверка линтером
 ```
+
+---
+
+## 🏗 Архитектура
+
+Проект построен по методологии **[Feature-Sliced Design](https://feature-sliced.design/)** — архитектурному стандарту для фронтенд-приложений.
+
+```
+src/
+├── app/                    # Инициализация приложения
+│   ├── styles/             # Глобальные стили и CSS-переменные
+│   ├── App.tsx             # Корневой компонент с Provider'ами
+│   ├── router.tsx          # Конфигурация маршрутов
+│   ├── store.ts            # Redux store
+│   └── hooks.ts            # Типизированные хуки
+│
+├── pages/                  # Страницы (композиция виджетов)
+│   ├── login/              # Страница авторизации
+│   ├── products/           # Список товаров
+│   ├── product-detail/     # Детальная страница товара
+│   ├── product-create/     # Создание товара
+│   ├── product-edit/       # Редактирование товара
+│   └── not-found/          # 404
+│
+├── widgets/                # Крупные составные блоки UI
+│   ├── layout/             # AppLayout + Sidebar
+│   ├── product-table/      # Таблица товаров
+│   └── product-toolbar/    # Панель действий (поиск, кнопки)
+│
+├── features/               # Пользовательские сценарии
+│   ├── auth-guard/         # Защита маршрутов
+│   ├── product-search/     # Поиск товаров
+│   ├── product-sort/       # Сортировка по столбцам
+│   └── product-delete/     # Удаление товаров
+│
+├── entities/               # Бизнес-сущности
+│   ├── product/            # Товар (slice, selectors, UI-строка)
+│   └── session/            # Сессия (авторизация, токены)
+│
+├── shared/                 # Переиспользуемый код
+│   ├── api/                # Axios-клиент, API-модули
+│   ├── ui/                 # UI-kit (Button, Input, Table, Toast...)
+│   ├── lib/                # Утилиты (cn, debounce)
+│   ├── config/             # Маршруты, константы
+│   └── assets/             # Иконки (SVG-компоненты)
+│
+└── main.tsx                # Точка входа
+```
+
+### Принципы FSD
+
+| Правило | Описание |
+|---------|----------|
+| **Однонаправленные зависимости** | `app → pages → widgets → features → entities → shared` |
+| **Public API** | Каждый модуль экспортирует только через `index.ts` |
+| **Изоляция слоёв** | Слой не импортирует из слоёв выше себя |
+| **Слабая связанность** | Features и entities не знают друг о друге напрямую |
+
+---
+
+## 📁 UI-компоненты (shared/ui)
+
+| Компонент | Описание |
+|-----------|----------|
+| `Button` | Кнопка с вариантами: primary, secondary, danger, ghost |
+| `IconButton` | Кнопка-иконка |
+| `Input` | Текстовое поле с поддержкой иконок |
+| `Checkbox` | Чекбокс с indeterminate-состоянием |
+| `Badge` | Статусный бейдж (success, warning, danger) |
+| `Icon` | Обёртка для SVG-иконок с размерами |
+| `Table` | Семейство компонентов таблицы |
+| `Pagination` | Пагинация с номерами страниц |
+| `Spinner` | Анимированный индикатор загрузки |
+| `ProgressBar` | Полоса загрузки в верхней части экрана |
+| `Toast` | Всплывающее уведомление |
+
+---
+
+## 🔌 API
+
+Приложение использует [DummyJSON API](https://dummyjson.com/):
+
+| Метод | Endpoint | Описание |
+|-------|----------|----------|
+| `POST` | `/auth/login` | Авторизация |
+| `GET` | `/auth/me` | Проверка сессии |
+| `GET` | `/products` | Список товаров (пагинация, сортировка) |
+| `GET` | `/products/search?q=` | Поиск товаров |
+| `GET` | `/products/:id` | Детали товара |
+| `DELETE` | `/products/:id` | Удаление товара |
+
+---
+
+## 📌 Дорожная карта
+
+- [x] Авторизация с «Запомнить меня»
+- [x] Таблица товаров с сортировкой и поиском
+- [x] Пагинация
+- [x] Удаление товаров (одиночное и массовое)
+- [x] Форма добавления товара
+- [x] Toast-уведомления
+- [ ] Форма редактирования товара
+- [ ] Тёмная тема
+- [ ] Unit-тесты (Vitest + Testing Library)
+- [ ] E2E-тесты (Playwright)
+- [ ] Storybook для UI-компонентов
+- [ ] CI/CD pipeline
+
+---
+
+## 📄 Лицензия
+
+Этот проект распространяется под лицензией [MIT](LICENSE).
+
+---
