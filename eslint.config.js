@@ -18,18 +18,18 @@ const fsdLayerOrder = [
 
 /** @type {import("eslint").Linter.Config[]} */
 export default tseslint.config(
-  // ── глобальные игноры ──
+  // глобальные игноры
   {
     ignores: ["dist/**", "node_modules/**", "vite.config.ts"],
   },
 
-  // ── базовые правила JS ──
+  // базовые правила JS
   js.configs.recommended,
 
-  // ── TypeScript ──
+  // TypeScript
   ...tseslint.configs.recommended,
 
-  // ── React ──
+  //  React
   {
     files: ["**/*.{ts,tsx}"],
     plugins: {
@@ -57,7 +57,7 @@ export default tseslint.config(
     },
   },
 
-  // ── Import ordering (FSD) ──
+  //  Import ordering (FSD)
   {
     files: ["**/*.{ts,tsx}"],
     plugins: {
@@ -87,7 +87,7 @@ export default tseslint.config(
         },
       ],
 
-      // ── FSD: запрет импортов сверху вниз ──
+      //  FSD: запрет импортов сверху вниз
       "import-x/no-restricted-paths": [
         "error",
         {
@@ -128,7 +128,7 @@ export default tseslint.config(
     },
   },
 
-  // ── TypeScript-специфичные правила ──
+  //  TypeScript-специфичные правила
   {
     files: ["**/*.{ts,tsx}"],
     rules: {
@@ -137,7 +137,7 @@ export default tseslint.config(
     },
   },
 
-  // ── Prettier (должен быть последним) ──
+  //  Prettier (должен быть последним)
   prettierConfig,
   {
     plugins: {

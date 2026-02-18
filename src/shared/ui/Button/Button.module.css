@@ -1,4 +1,4 @@
-/* ── Base ── */
+/*  Base  */
 .button {
   display: inline-flex;
   align-items: center;
@@ -29,7 +29,7 @@
   cursor: not-allowed;
 }
 
-/* ── Sizes ── */
+/*  Sizes  */
 .sm {
   height: 32px;
   padding: 0 12px;
@@ -48,7 +48,7 @@
   font-size: 16px;
 }
 
-/* ── Variants ── */
+/*  Variants  */
 .primary {
   background-color: var(--color-primary, #4d90fe);
   color: #fff;
@@ -108,12 +108,12 @@
   border-color: var(--color-danger-active, #b71c1c);
 }
 
-/* ── Modifiers ── */
+/*  Modifiers  */
 .fullWidth {
   width: 100%;
 }
 
-/* ── Inner elements ── */
+/*  Inner elements  */
 .icon {
   display: inline-flex;
   align-items: center;

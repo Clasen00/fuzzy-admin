@@ -23,7 +23,7 @@
   cursor: not-allowed;
 }
 
-/* ── Sizes ── */
+/*  Sizes  */
 .sm {
   width: 28px;
   height: 28px;
@@ -39,7 +39,7 @@
   height: 44px;
 }
 
-/* ── Variants ── */
+/*  Variants  */
 .ghost:hover:not(:disabled) {
   background-color: var(--color-ghost-hover, rgba(0, 0, 0, 0.06));
   color: var(--color-text, #1a1a1a);

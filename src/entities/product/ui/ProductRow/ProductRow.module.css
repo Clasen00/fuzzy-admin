@@ -1,0 +1,25 @@
+.productInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.image {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  background-color: var(--color-secondary-bg, #f0f2f5);
+}
+
+.name {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--color-text, #1a1a1a);
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--color-text-secondary, #6b7280);
+  margin-top: 2px;
+}

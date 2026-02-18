@@ -29,7 +29,7 @@
   cursor: not-allowed;
 }
 
-/* ── Sizes ── */
+/*  Sizes  */
 .sm {
   height: 32px;
   padding: 0 10px;
@@ -45,7 +45,7 @@
   padding: 0 16px;
 }
 
-/* ── Input ── */
+/*  Input  */
 .input {
   flex: 1;
   min-width: 0;
@@ -66,7 +66,7 @@
   cursor: not-allowed;
 }
 
-/* ── Icon slots ── */
+/*  Icon slots  */
 .icon {
   display: inline-flex;
   align-items: center;
